@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load cms_tags sekizai_tags %}
+
+{% block contentClass %}home{% endblock %}
+
+{% block header-back %}
+			<section id="slider" class="clearfix">
+				<div class="img i1">
+					
+				</div>
+				<div class="img i2 transparent">
+					
+				</div>
+			</section>
+{% addtoblock "js" %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var s = jQuery("#slider");
+        var i = jQuery("div.img", s);
+        var m = i.length;
+        var p = 1;
+        var f = function() {
+            var np = (p < m) ? p + 1 : 1;
+            $("#slider div.i" + np).removeClass('transparent');
+            $("#slider div.i" + p).addClass('transparent');
+            p = np
+        };
+        setInterval(f, 6000)
+    }); 
+</script>
+{% endaddtoblock %}
+{% endblock %}
+
+{% block header-content %}
+
+<div id="left-bar">
+	<div class="left"> </div>
+	<div class="in-container"> </div>
+</div>
+
+<div id="header-content">
+	<div class="container_24">
+		<h1>Optima Conseil-Expert</h1>
+	</div>
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $window = $(window);
+        var $left = $('#left-bar div.left');
+        function checkWidth() {
+            var windowsize = $window.width();
+            var left_size = (windowsize - 960) / 2;
+            $left.width(left_size);
+        }
+        checkWidth();
+        $(window).resize(checkWidth);
+    });
+</script>
+{% endaddtoblock %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

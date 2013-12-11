@@ -1,0 +1,270 @@
+/* variables */
+
+@header-h:1160px;
+
+@rad1:4px;
+
+/* classes */
+
+.full() {
+  width:100%;
+  height:100%;
+}
+
+.full_w() {
+  width:100%;
+  position:relative;
+  display:block;
+}
+
+.border-radius (@radius: 4px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.abs_tl() {
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+.opacity-65() {
+  opacity:0.65;
+  filter:alpha(opacity=65);
+}
+
+/* ---------------------------------------------- CSS du site ------------------------------------------- */
+
+/* GENERAL */
+
+@font-face {
+    font-family: DroidSans;
+    src: url('../fonts/DroidSans.ttf');
+}
+
+@font-face {
+    font-family: DroidSansBold;
+    src: url('../fonts/DroidSans-Bold.ttf');
+}
+
+article, aside, audio, canvas, details, embed, figcaption, figure, footer, header, hgroup, nav, progress, section, source, video {display:block;}
+mark, summary, time {display:inline;}
+
+html {width:100%;}
+
+.fleft{ float:left; }
+.fright{ float:right; }
+
+body {   
+  font-family:DroidSans, Helvetica, sans-serif;
+  font-size:100%; 
+  padding:0;
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0 5px;
+}
+
+/* Overwrites de bootstrap */
+
+.btn-grey {
+  color: #ffffff;
+  background:#444348;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#444348), to(#2c2b2d));
+  background: -moz-linear-gradient(#444348, #2c2b2d);
+  background: linear-gradient(#444348, #2c2b2d);
+  -pie-background: linear-gradient(#444348, #2c2b2d);
+  background-image: -o-linear-gradient(#444348, #2c2b2d);
+  border-radius:@rad1;
+  -moz-border-radius:@rad1;
+  -webkit-border-radius:@rad1;
+  border-color: #CCCCCC;
+}
+.btn-grey:hover,
+.btn-grey:focus,
+.btn-grey:active,
+.btn-grey.active,
+.open .dropdown-toggle.btn-grey {
+  color: #ffffff;
+  background:#605f66;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#605f66), to(#4b494d));
+  background: -moz-linear-gradient(#605f66, #4b494d);
+  background: linear-gradient(#605f66, #4b494d);
+  -pie-background: linear-gradient(#605f66, #4b494d);
+  background-image: -o-linear-gradient(#605f66, #4b494d);
+  border-color: #EEEEEE;
+}
+.btn-grey:active,
+.btn-grey.active,
+.open .dropdown-toggle.btn-grey {
+  background:#4b494d;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#4b494d), to(#605f66));
+  background: -moz-linear-gradient(#4b494d, #605f66);
+  background: linear-gradient(#4b494d, #605f66);
+  -pie-background: linear-gradient(#4b494d, #605f66);
+  background-image: -o-linear-gradient(#4b494d, #605f66);
+}
+.btn-grey.disabled,
+.btn-grey[disabled],
+fieldset[disabled] .btn-grey,
+.btn-grey.disabled:hover,
+.btn-grey[disabled]:hover,
+fieldset[disabled] .btn-grey:hover,
+.btn-grey.disabled:focus,
+.btn-grey[disabled]:focus,
+fieldset[disabled] .btn-grey:focus,
+.btn-grey.disabled:active,
+.btn-grey[disabled]:active,
+fieldset[disabled] .btn-grey:active,
+.btn-grey.disabled.active,
+.btn-grey[disabled].active,
+fieldset[disabled] .btn-grey.active {
+  color: #DDDDDD;
+  background:#605f66;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#605f66), to(#4b494d));
+  background: -moz-linear-gradient(#605f66, #4b494d);
+  background: linear-gradient(#605f66, #4b494d);
+  -pie-background: linear-gradient(#605f66, #4b494d);
+  background-image: -o-linear-gradient(#605f66, #4b494d);
+  border-color: #DDDDDD;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: #ffffff;
+  background:#444348;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#444348), to(#2c2b2d));
+  background: -moz-linear-gradient(#444348, #2c2b2d);
+  background: linear-gradient(#444348, #2c2b2d);
+  -pie-background: linear-gradient(#444348, #2c2b2d);
+  background-image: -o-linear-gradient(#444348, #2c2b2d);
+  border-color: #CCCCCC;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  color: #ffffff;
+  background:#605f66;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#605f66), to(#4b494d));
+  background: -moz-linear-gradient(#605f66, #4b494d);
+  background: linear-gradient(#605f66, #4b494d);
+  -pie-background: linear-gradient(#605f66, #4b494d);
+  background-image: -o-linear-gradient(#605f66, #4b494d);
+  border-color: #EEEEEE;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background:#4b494d;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#4b494d), to(#605f66));
+  background: -moz-linear-gradient(#4b494d, #605f66);
+  background: linear-gradient(#4b494d, #605f66);
+  -pie-background: linear-gradient(#4b494d, #605f66);
+  background-image: -o-linear-gradient(#4b494d, #605f66);
+  cursor: default;
+  border-color: #DDDDDD;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #DDDDDD;
+  background:#605f66;
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from(#605f66), to(#4b494d));
+  background: -moz-linear-gradient(#605f66, #4b494d);
+  background: linear-gradient(#605f66, #4b494d);
+  -pie-background: linear-gradient(#605f66, #4b494d);
+  background-image: -o-linear-gradient(#605f66, #4b494d);
+  border-color: #DDDDDD;
+  cursor: not-allowed;
+}
+
+/* Design de base */
+
+body > header{
+  .full_w;
+  height:@header-h;
+}
+
+body > header .back{
+  z-index:1;
+  height:800px;
+  position:relative;
+}
+
+#content{
+  .full_w;
+  z-index:2;
+}
+
+body > footer{
+  .full_w;
+  z-index:2;
+}
+
+/* Back du header */
+
+#slider{
+  .full;
+  position:relative;
+}
+
+#slider div.img{
+  .full;
+  position:absolute;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  background-position:top center;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+}
+
+#slider div.img.transparent {
+  opacity:0;
+}
+
+#slider div.i1{
+  background-image: url('../img/slides/slide_1.jpg');
+}
+
+#slider div.i2{
+  background-image: url('../img/slides/slide_2.jpg');
+}
+
+/* Home */
+
+#home #left-bar{
+  .opacity-65;
+  .abs_tl;
+  background:black;
+  height:@header-h;
+  z-index:2;
+}
+
+#home #left-bar div{
+  height:100%;
+  float:left;
+}
+
+#home #left-bar div.in-container{
+  width:300px;
+}
+
+#home #header-content{
+  z-index:3;
+  position:absolute;
+  .abs_tl;
+  .full;
+}

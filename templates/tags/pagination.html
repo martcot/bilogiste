@@ -1,0 +1,25 @@
+<div class="pagination-div">
+	<ul class="pagination">
+	{% if page_obj.has_previous %}
+	  <li><a href="{{ prefix }}page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+	{% else %}
+	  <li class="disabled"><a href="#" onclick="javascript: return false;">&laquo;</a></li>
+	{% endif %}
+	{% for page in pages %}
+	  {% if page %}
+	    {% ifequal page.num page_obj.number %}
+	  <li class="active"><a href="#" onclick="javascript: return false;">{{ page.num }}</a></li>
+	    {% else %}
+	  <li><a href="{{ page.url }}">{{ page.num }}</a></li>
+	    {% endifequal %}
+	  {% else %}
+	  <li class="disabled"><a href="#" onclick="javascript: return false;">...</a></li>
+	  {% endif %}
+	{% endfor %}
+	{% if page_obj.has_next %}
+	  <li><a href="{{ prefix }}page={{ page_obj.next_page_number }}">&raquo;</a></li>
+	{% else %}
+	  <li class="disabled"><a href="#" onclick="javascript: return false;">&raquo;</a></li>
+	{% endif %}
+	</ul>
+</div>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block contentClass %}content{% endblock %}
+
+{% block content %}
+			<div class="container_24">
+				<div class="wrapper">
+					<ul id="breadcrumb" class="clearfix">
+						{% show_breadcrumb "app/breadcrumb.html" %}
+					</ul>
+				</div>
+				
+				<div class="wrapper content-wrap">
+					<nav id="page-menu" class="grid_6 alpha">
+						<h2>Menu</h2>
+						<ul class="list-3">
+							<li class="selected">
+								<a href="{% page_url request.current_page %}">
+									{{ request.current_page }}
+								</a>
+							</li>
+							{% show_sub_menu 1 %}
+						</ul>
+					</nav>
+					
+					<article class="main grid_18 omega">
+						<header>
+							{% placeholder "content-header" %}
+						</header>
+						<div class="content">
+							{% placeholder "content" %}
+						</div>
+					</article>
+				</div>
+			</div>
+{% endblock %}

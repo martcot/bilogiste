@@ -1,0 +1,29 @@
+{% load cms_tags menu_tags %}
+<p>
+	Bonjour,<br/>
+	Vous recevez ce courriel car un visiteur a écrit sur la page Contactez-nous :<br/>
+	<a href="http://{{request.META.HTTP_HOST}}{% page_url 'contact' %}">
+		http://{{request.META.HTTP_HOST}}{% page_url 'contact' %}
+	</a>
+</p>
+
+<h3>Contenu du message:</h3>
+
+<table style="border:1px solid black;width:600px;border-collapse:collapse;">
+	<tr>
+		<td style="vertical-align:top;padding:10px;width:100px;border-bottom:1px solid black;">Expéditeur :</td>
+		<td style="vertical-align:top;padding:10px;border-bottom:1px solid black;border-left:1px solid black;">{{form.nom}}</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;padding:10px;width:100px;border-bottom:1px solid black;">Courriel :</td>
+		<td style="vertical-align:top;padding:10px;border-bottom:1px solid black;border-left:1px solid black;"><a href="mailto:{{form.courriel}}">{{form.courriel}}</a></td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;padding:10px;width:100px;border-bottom:1px solid black;">Sujet :</td>
+		<td style="vertical-align:top;padding:10px;border-bottom:1px solid black;border-left:1px solid black;">{{form.sujet}}</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;padding:10px;width:100px;border-bottom:1px solid black;">Message :</td>
+		<td style="vertical-align:top;padding:10px;border-bottom:1px solid black;border-left:1px solid black;">{{form.textarea|linebreaksbr}}</td>
+	</tr>
+</table>

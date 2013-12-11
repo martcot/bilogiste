@@ -1,0 +1,5 @@
+{% load i18n cms_tags menu_tags %}
+{% for ancre in ancestors %}
+<li>{% if not forloop.last or title or page > 1 %}<a href="{{ ancre.get_absolute_url }}">{{ ancre.get_menu_title }}</a>{% else %}{{ ancre.get_menu_title }}{% endif %}</li>
+{% endfor %}
+{% if title %}<li>{{title}}</li>{% elif page > 1 %}<li>Page {{page}}</li>{% endif %}

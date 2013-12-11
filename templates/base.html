@@ -1,0 +1,55 @@
+{% load cms_tags sekizai_tags menu_tags placeholder_tags compress %}<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	  	<title>{% block Title %}{% if title %}{{title}} - {% page_attribute page_title %}{% elif cat %}{{cat.name}} - {% page_attribute page_title %}{% else %}{% page_attribute page_title %}{% endif %}{% endblock %} - Optima Expert-Conseil</title>
+	  	<meta charset="utf-8">
+{% block OGMETA %}		<meta name="description" content="{% page_attribute meta_description %}">{% endblock %}
+	    <link rel="icon" href="{{ STATIC_URL }}favicon.ico" type="image/x-icon">    
+		<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" type="image/x-icon" />
+	    {% compress css %}
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" type="text/css"/>
+	    <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" media="screen">
+	    <link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css" type="text/css" media="screen">
+	    {% if not DEBUG %}<link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" type="text/css" media="screen">{% endif %}
+	    {% endcompress %}
+	    {% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
+	    {% if DEBUG %}<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/styles.less" />
+	    <script src="{{ STATIC_URL }}js/less.min.js"></script>{% endif %}
+	    <!--[if lt IE 9]>
+			<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+	    	<script src="{{ STATIC_URL }}js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body id="{{request.current_page.reverse_id}}">
+		<div id="fb-root"></div>
+		{% cms_toolbar %}
+
+		<header>
+			<div class="back">
+				{% block header-back %}
+				
+				{% endblock %}
+			</div>
+			{% block header-content %}
+			
+			{% endblock %}
+		</header>
+		
+		<div id="content" class="{% block contentClass %}{% endblock %}">
+{% block content %}{% endblock %}
+		</div>
+		
+		<footer>
+	
+		</footer>
+		
+		{% compress js %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/functions.js"></script>
+	    {% endcompress %}
+	    {% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
+		
+	</body>
+</html>

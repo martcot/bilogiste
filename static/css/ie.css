@@ -1,0 +1,29 @@
+.row-2,
+h5,
+.box ,
+.box-1,
+.box-2,
+.box-3,
+.box-4,
+.button,
+.button-1,
+.button-2,
+#page1 .tabs,
+#page1 .tabs li.first,
+#page1 .tab_container,
+#page2 .tabs,
+#page2 .tabs li.first,
+#page2 .tab_container,
+.sf-menu,
+.sf-menu li.first,
+.slider-wrapper{
+	behavior: url(js/PIE.htc);
+	position:relative;
+}
+
+
+ul.sf-menu li li ul{
+	behavior: url(js/PIE.htc); 
+	position:absolute;
+}
+
