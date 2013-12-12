@@ -1,10 +1,46 @@
 /* variables */
 
+@b-green:#9a9e55;
+@d-green:#333300;
+@g-blue:#3e5462;
+
 @header-h:1160px;
 
 @rad1:4px;
 
 /* classes */
+
+.rel() {
+  position:relative;
+}
+
+.abs() {
+  position:absolute;
+}
+
+.fl() {
+  float:left;
+}
+
+.fr() {
+  float:right;
+}
+
+.tal() {
+  text-align:left;
+}
+
+.tar() {
+  text-align:right;
+}
+
+.tdn{
+  text-decoration:none;
+}
+
+.ttu() {
+  text-transform:uppercase;
+}
 
 .full() {
   width:100%;
@@ -34,6 +70,17 @@
   filter:alpha(opacity=65);
 }
 
+.sm-t-shadow(@alpha:0.65) {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, @alpha);
+}
+
+.color-trans() {
+  -webkit-transition: color 0.5s ease-in-out;
+  -moz-transition: color 0.5s ease-in-out;
+  -o-transition: color 0.5s ease-in-out;
+  transition: color 0.5s ease-in-out;
+}
+
 /* ---------------------------------------------- CSS du site ------------------------------------------- */
 
 /* GENERAL */
@@ -53,8 +100,8 @@ mark, summary, time {display:inline;}
 
 html {width:100%;}
 
-.fleft{ float:left; }
-.fright{ float:right; }
+.fleft{ .fl; }
+.fright{ .fr; }
 
 body {   
   font-family:DroidSans, Helvetica, sans-serif;
@@ -64,7 +111,7 @@ body {
 
 .wrapper {
     overflow: hidden;
-    position: relative;
+    .rel;
     width: 100%;
     padding: 0 5px;
 }
@@ -199,7 +246,7 @@ body > header{
 body > header .back{
   z-index:1;
   height:800px;
-  position:relative;
+  .rel;
 }
 
 #content{
@@ -217,11 +264,14 @@ body > footer{
 #slider{
   .full;
   position:relative;
+  box-shadow: inset 11px 0px 50px 9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 11px 0px 50px 9px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: inset 11px 0px 50px 9px rgba(0, 0, 0, 0.75);
 }
 
 #slider div.img{
   .full;
-  position:absolute;
+  .abs;
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
@@ -241,6 +291,39 @@ body > footer{
 
 #slider div.i2{
   background-image: url('../img/slides/slide_2.jpg');
+}
+
+#slider div.img .hover{
+  .abs;
+  top:305px;
+  left:570px;
+  width:545px;
+  height:290px;
+}
+
+#slider div.img .hover .bg{
+  background:white;
+  .opacity-65;
+  .full;
+  .abs;
+  z-index:1;
+}
+
+#slider div.img .hover .text{
+  color:@d-green;
+  .full;
+  .abs;
+  z-index:2;
+  padding:40px 30px;
+  font-size:3em;
+  baseline:bottom;
+  line-height:70px;
+  
+}
+
+#slider div.img .hover .text strong{
+  font-size:1.2em;
+  font-weight:600;
 }
 
 /* Home */
@@ -264,7 +347,98 @@ body > footer{
 
 #home #header-content{
   z-index:3;
-  position:absolute;
   .abs_tl;
   .full;
+}
+
+#home #header-content .container_24{
+  .rel;
+}
+
+#home #header-content span.tel{
+  color:white;
+  .fl;
+  width:660px;
+  margin-top:50px;
+  .tar;
+  .sm-t-shadow(1);
+}
+
+#home #header-content .left{
+  .fl;
+  width:300px;
+  height: 1160px;
+  .rel;
+}
+
+#home #header-content .left h1{
+  color:white;
+  font-weight:600;
+  width:100%;
+  margin-top:150px;
+  margin-bottom:90px;
+  font-size:1.7em;
+  padding:0 25px 0 0;
+  .tar;
+  .ttu;
+}
+
+#home #header-content .left #main-menu ul{
+  padding:0 25px 0 0;
+  margin:0;
+  .tar;
+  list-style-type:none;
+}
+
+#home #header-content .left #main-menu ul li{
+  margin-bottom:35px;
+}
+
+#home #header-content .left #main-menu ul li a{
+  .color-trans;
+  color:@b-green;
+  font-size:1.3em;
+  .ttu;
+}
+
+#home #header-content .left #main-menu ul li a:hover{
+  color:white;
+  .tdn;
+}
+
+#home #header-content .left span.signature{
+  width:100%;
+  height:360px;
+  bottom:0;
+  background:url('../img/signature.png') no-repeat center center;
+  .abs;
+}
+
+#home #header-content .intro-text{
+  height:360px;
+  width:660px;
+  bottom:0;
+  left: 300px;
+  .fl;
+  .abs;
+  padding:75px 55px;
+  overflow:hidden;
+}
+
+#home #header-content .intro-text h1,
+#home #header-content .intro-text h2,
+#home #header-content .intro-text h3,
+#home #header-content .intro-text h4{
+  font-size:1.5em;
+  color:@g-blue;
+  margin:0 0 30px;
+  padding:0;
+  font-family:DroidSansBold;
+}
+
+#home #header-content .intro-text p{
+  font-size:1em;
+  padding:0;
+  margin:0;
+  color:@g-blue;
 }
