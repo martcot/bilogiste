@@ -93,5 +93,168 @@
 {% endblock %}
 
 {% block content %}
+<section id="services">
+	<div class="container_24">
+		<div class="wrapper">
+			<article class="service closed">
+				<header>
+					<h1>Service 1</h1>
+				</header>
+				<div class="content">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+					</p>
+					<a href="#">
+						En savoir plus
+					</a>
+				</div>
+			</article>
+			<article class="service last closed">
+				<header>
+					<h1>Service 2</h1>
+				</header>
+				<div class="content">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+					</p>
+					<a href="#">
+						En savoir plus
+					</a>
+				</div>
+			</article>
+			<article class="service closed">
+				<header>
+					<h1>Service 3</h1>
+				</header>
+				<div class="content">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+					</p>
+					<a href="#">
+						En savoir plus
+					</a>
+				</div>
+			</article>
+			<article class="service last closed">
+				<header>
+					<h1>Service 4</h1>
+				</header>
+				<div class="content">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+					</p>
+					<a href="#">
+						En savoir plus
+					</a>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
 
+<section id="etudes-de-cas">
+	<div class="bg"><div class="right"> </div></div>
+	<div class="container_24">
+		<div class="wrapper">
+			<header class="s-h">
+				<h1>Études de cas</h1>
+			</header>
+			
+			<article class="etude clearfix">
+				<figure>
+					<img src="{{STATIC_URL}}img/samples/etude1.jpg" alt="" title=""/>
+				</figure>
+				<div class="content">
+					<header>
+						<h1>Gestion de la bleuètière MRC</h1>
+					</header>
+					<div class="clearfix">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+							Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+							Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+							Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+						</p>
+						<a href="#">En savoir plus</a>
+					</div>
+				</div>
+			</article>
+			<article class="etude clearfix">
+				<figure>
+					<img src="{{STATIC_URL}}img/samples/etude2.jpg" alt="" title=""/>
+				</figure>
+				<div class="content">
+					<header>
+						<h1>Gestion de la bleuètière MRC</h1>
+					</header>
+					<div class="clearfix">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+							Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+							Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+							Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+						</p>
+						<a href="#">En savoir plus</a>
+					</div>
+				</div>
+			</article>
+			<article class="etude clearfix">
+				<figure>
+					<img src="{{STATIC_URL}}img/samples/etude3.jpg" alt="" title=""/>
+				</figure>
+				<div class="content">
+					<header>
+						<h1>Gestion de la bleuètière MRC</h1>
+					</header>
+					<div class="clearfix">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
+							Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
+							Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
+							Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+						</p>
+						<a href="#">En savoir plus</a>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#services .service h1').click(function(){
+        	var $A = $(this).parent().parent();
+        	var $B = jQuery(".content", $A);
+        	if($A.hasClass('closed'))
+        	{
+        		$B.slideDown( "fast", function() {
+	        		$A.removeClass('closed');
+	        		$A.addClass('opened');
+	        	});
+        	}
+        	else
+        	{
+        		$B.slideUp( "fast", function() {
+	        		$A.removeClass('opened');
+	        		$A.addClass('closed');
+        		});
+        	}
+        });
+    });
+</script>
+{% endaddtoblock %}
 {% endblock %}
