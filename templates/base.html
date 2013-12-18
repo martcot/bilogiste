@@ -27,11 +27,20 @@
 		<header>
 			<div class="back">
 				{% block header-back %}
-				
 				{% endblock %}
 			</div>
 			{% block header-content %}
-			
+			<div id="header-content">
+				<div class="main container_24 clearfix">
+					<h1>Optima<br/>Expert-Conseil</h1>
+					<span class="tel">T &nbsp;&nbsp;&nbsp;&nbsp;4 1 8 &nbsp;&nbsp;5 4 3 &nbsp;&nbsp;7 7 7 7</span>
+					<nav id="main-menu">
+						<ul>
+							{% show_menu 0 0 0 1 "app/menu.html" %}
+						</ul>
+					</nav>
+				</div>
+			</div>
 			{% endblock %}
 		</header>
 		

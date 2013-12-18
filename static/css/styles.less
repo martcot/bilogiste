@@ -7,13 +7,16 @@
 @g-blue:#3e5462;
 @beige:#d9d4c2;
 
-@header-h:1160px;
+@h-header-h:1160px;
+@header-h:128px;
 
 @rad1:4px;
 
 /* classes */
 
 /* gen */
+.normal() { font-weight:300; }
+.bold() { font-weight:600; }
 .w100() { width:100%; }
 .rel() { position:relative; }
 .abs() { position:absolute; }
@@ -238,8 +241,70 @@ body > header{
 
 body > header .back{
   z-index:1;
-  height:800px;
+  height:@header-h;
   .rel;
+  background-position:top center;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  background-image: url('../img/header-content-bg.jpg');
+}
+
+#header-content{
+  z-index:2;
+  .abs_tl;
+  .full;
+  height:@header-h;
+}
+
+#header-content .main h1{
+  color:white;
+  .bold;
+  .w100;
+  margin:40px 0 0;
+  font-size:1.7em;
+  padding:0;
+  .tar;
+  .ttu;
+  width:270px;
+  .fl;
+}
+
+#header-content .main span.tel{
+  color:white;
+  .fr;
+  width:200px;
+  margin-top:30px;
+  .tar;
+  .sm-t-shadow(1);
+}
+
+#header-content .main #main-menu ul{
+  padding:0;
+  margin:30px 0 0;
+  .tar;
+  .fr;
+  list-style-type:none;
+}
+
+#header-content .main #main-menu ul li{
+  float:left;
+  margin-left:15px;
+}
+
+#header-content .main #main-menu ul li a{
+  .color-trans;
+  color:@b-green;
+  font-size:0.95em;
+  .ttu;
+}
+
+#main-menu ul li.active a{
+  color:white !important;
+}
+
+#header-content .main #main-menu ul li a:hover{
+  color:white;
+  .tdn;
 }
 
 #content{
@@ -265,7 +330,7 @@ body > footer{
 }
 
 #footer-menu ul li{
-  margin-bottom:15px;
+  margin-bottom:10px;
 }
 
 #footer-menu ul li a{
@@ -303,6 +368,7 @@ body > footer{
 
 #footer-services ul li a:hover{
   opacity:0.90;
+  color:@beige;
   filter:alpha(opacity=90);
   .tdn;
 }
@@ -357,6 +423,104 @@ body > footer{
 #footer-coord .half.last a:hover{
   color:@beige;
   .tdn;
+}
+
+/* General content */
+
+#content{
+  min-height:430px;
+}
+
+#content .bg-hafl{
+  z-index:1;
+  .abs_tl;
+  .full;
+  background:white;
+}
+
+#content .bg-hafl .right{
+  .abs;
+  right:0;
+  width:50%;
+  top:0;
+  height:100%;
+  background:@beige;
+}
+
+#content .container_24{
+  .rel;
+  z-index:2;
+}
+
+#content #breadcrumb{
+  .full_w;
+  .rel;
+  margin:15px 5px 25px;
+}
+
+#content #breadcrumb li{
+  float:left;
+  margin-right:13px;
+  font-size:0.8em;
+  .ttu;
+}
+
+#content #breadcrumb li a{
+  color:@d-green;
+  .color-trans();
+  padding-right:10px;
+}
+
+#content #breadcrumb li a:hover{
+  color:@w-green;
+  .tdn;
+}
+
+/* About */
+
+#about #content .content-wrap article.main figure{
+  .abs_tl;
+  z-index:1;
+}
+
+#about #content .content-wrap article.main figure img{
+  max-width:500px;
+  max-height:375px;
+}
+
+#about #content .content-wrap article.main .content{
+  .rel;
+  .fr;
+  margin:15px 0 30px;
+  width:600px;
+  min-height:300px;
+  z-index:2;
+}
+
+#about #content .content-wrap article.main .content header{
+  background:url('../img/content-header-left-img-bg.png') no-repeat;
+  width:600px;
+  height:85px;
+}
+
+#about #content .content-wrap article.main .content header h1{
+  margin:0;
+  padding:30px 0 0 30px;
+  color:@d-green;
+  font-size:1.4em;
+}
+
+#about #content .content-wrap article.main .content div{
+  margin:0;
+  padding:0 30px 30px;
+  background:white;
+}
+
+#about #content .content-wrap article.main .content div p{
+  margin:0 0 30px;
+  padding:0;
+  color:@d-green;
+  font-size:1em;
 }
 
 /* Back du header */
@@ -426,16 +590,25 @@ body > footer{
 
 #slider div.img .hover .text strong{
   font-size:1.2em;
-  font-weight:600;
+  .bold;
 }
 
 /* Home */
+
+#home > header{
+  height:@h-header-h;
+}
+
+#home > header .back{
+  height:800px;
+  background:none;
+}
 
 #home #left-bar{
   .opacity-65;
   .abs_tl;
   background:black;
-  height:@header-h;
+  height:@h-header-h;
   z-index:2;
 }
 
@@ -450,8 +623,7 @@ body > footer{
 
 #home #header-content{
   z-index:3;
-  .abs_tl;
-  .full;
+  height:auto;
 }
 
 #home #header-content .container_24{
@@ -476,7 +648,7 @@ body > footer{
 
 #home #header-content .left h1{
   color:white;
-  font-weight:600;
+  .bold;
   .w100;
   margin-top:150px;
   margin-bottom:90px;
@@ -574,7 +746,7 @@ body > footer{
   text-align:center;
   color:white;
   font-size:1.6em;
-  font-weight:300;
+  .normal;
   .color-trans;
   .ttu;
 }
@@ -716,8 +888,9 @@ body > footer{
   display:block;
   .fr;
   font-size:0.9em;
+  .bold;
   padding:10px 22px;
-  color:@d-green;
+  color:@b-green;
   background:white;
   border:1px @beige solid;
   .color-trans;
@@ -725,6 +898,6 @@ body > footer{
 }
 
 #home #content section#etudes-de-cas article.etude .content div a:hover{
-  color:@w-green;
+  color:@d-green;
   .tdn;
 }

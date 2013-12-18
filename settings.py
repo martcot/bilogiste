@@ -139,8 +139,7 @@ TEMPLATE_DIRS = (
 CMS_TEMPLATES = (
     ("index.html",u"Accueil"),
     ("contact.html",u"Contact"),
-    ("content_children.html",u"Contenu - menu enfants"),
-    ("content_parent.html",u"Contenu - menu pages soeurs"),
+    ("about.html",u"À propos"),
     ("app.html",u"Application"),
 )
 

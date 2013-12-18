@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+			<div class="container_24">
+				<div class="wrapper">
+					<ul id="breadcrumb" class="clearfix">
+						{% show_breadcrumb "app/breadcrumb.html" %}
+					</ul>
+				</div>
+				
+				<div class="wrapper content-wrap clearfix">
+					<article class="main grid_24 omega">
+						<figure>
+							<img src="{{STATIC_URL}}img/samples/etude1.jpg" alt="" title=""/>
+						</figure>
+						<div class="content">
+							<header>
+								<h1>{{ request.current_page }}</h1>
+							</header>
+							<div class="clearfix">
+								{% placeholder "content" %}
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+{% endblock %}
