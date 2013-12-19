@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load cms_tags menu_tags placeholder_tags sekizai_tags %}
+{% load cms_tags menu_tags placeholder_tags sekizai_tags thumbnail %}
 
 {% block contentClass %}home{% endblock %}
 
@@ -93,77 +93,30 @@
 {% endblock %}
 
 {% block content %}
+{% if services %}
 <section id="services">
 	<div class="container_24">
 		<div class="wrapper">
-			<article class="service closed">
+			{% for service in services %}
+			<article class="service closed{% if forloop.counter|divisibleby:"2" %} last{% endif %}">
 				<header>
-					<h1>Service 1</h1>
+					<h1>{{service}}</h1>
 				</header>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+						{{service.desc}}
 					</p>
-					<a href="#">
+					<a href="{{service.get_absolute_url}}">
 						En savoir plus
 					</a>
 				</div>
 			</article>
-			<article class="service last closed">
-				<header>
-					<h1>Service 2</h1>
-				</header>
-				<div class="content">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
-					</p>
-					<a href="#">
-						En savoir plus
-					</a>
-				</div>
-			</article>
-			<article class="service closed">
-				<header>
-					<h1>Service 3</h1>
-				</header>
-				<div class="content">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
-					</p>
-					<a href="#">
-						En savoir plus
-					</a>
-				</div>
-			</article>
-			<article class="service last closed">
-				<header>
-					<h1>Service 4</h1>
-				</header>
-				<div class="content">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-						Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-						Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-						Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
-					</p>
-					<a href="#">
-						En savoir plus
-					</a>
-				</div>
-			</article>
+			{% endfor %}
 		</div>
 	</div>
 </section>
-
+{% endif %}
+{% if casestudies %}
 <section id="etudes-de-cas">
 	<div class="bg"><div class="right"> </div></div>
 	<div class="container_24">
@@ -171,68 +124,30 @@
 			<header class="s-h">
 				<h1>Études de cas</h1>
 			</header>
-			
+			{% for casestudy in casestudies %}
 			<article class="etude clearfix">
 				<figure>
-					<img src="{{STATIC_URL}}img/samples/etude1.jpg" alt="" title=""/>
+					{% thumbnail casestudy.photo "534x401" crop="center" as im %}
+					<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{casestudy}}" title="{{casestudy}}"/>
+					{% endthumbnail %}
 				</figure>
 				<div class="content">
 					<header>
-						<h1>Gestion de la bleuètière MRC</h1>
+						<h1>{{casestudy}}</h1>
 					</header>
 					<div class="clearfix">
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-							Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-							Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-							Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
+							{{casestudy.desc}}
 						</p>
-						<a href="#">En savoir plus</a>
+						<a href="{{casestudy.get_absolute_url}}">En savoir plus</a>
 					</div>
 				</div>
 			</article>
-			<article class="etude clearfix">
-				<figure>
-					<img src="{{STATIC_URL}}img/samples/etude2.jpg" alt="" title=""/>
-				</figure>
-				<div class="content">
-					<header>
-						<h1>Gestion de la bleuètière MRC</h1>
-					</header>
-					<div class="clearfix">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-							Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-							Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-							Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
-						</p>
-						<a href="#">En savoir plus</a>
-					</div>
-				</div>
-			</article>
-			<article class="etude clearfix">
-				<figure>
-					<img src="{{STATIC_URL}}img/samples/etude3.jpg" alt="" title=""/>
-				</figure>
-				<div class="content">
-					<header>
-						<h1>Gestion de la bleuètière MRC</h1>
-					</header>
-					<div class="clearfix">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mi vel orci viverra accumsan. 
-							Ut interdum, lacus in bibendum egestas, enim enim bibendum lorem, eu euismod libero nulla cursus orci. 
-							Aliquam pharetra dui odio, id aliquam sapien eleifend in. 
-							Duis non commodo eros. Morbi sed porttitor ante, quis dapibus tortor.
-						</p>
-						<a href="#">En savoir plus</a>
-					</div>
-				</div>
-			</article>
+			{% endfor %}
 		</div>
 	</div>
 </section>
-
+{% endif %}
 {% addtoblock "js" %}
 <script type="text/javascript">
     $(document).ready(function() {

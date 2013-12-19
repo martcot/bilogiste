@@ -1,4 +1,4 @@
-{% load cms_tags sekizai_tags menu_tags placeholder_tags compress %}<!DOCTYPE html>
+{% load cms_tags sekizai_tags menu_tags placeholder_tags compress services_tags %}<!DOCTYPE html>
 <html lang="fr">
 	<head>
 	  	<title>{% block Title %}{% if title %}{{title}} - {% page_attribute page_title %}{% elif cat %}{{cat.name}} - {% page_attribute page_title %}{% else %}{% page_attribute page_title %}{% endif %}{% endblock %} - Optima Expert-Conseil</title>
@@ -57,12 +57,7 @@
 						</ul>
 					</nav>
 					<div id="footer-services" class="grid_9 suffix_1">
-						<ul>
-							<li><a href="#">Service 1</a></li>
-							<li><a href="#">Service 2</a></li>
-							<li><a href="#">Service 3</a></li>
-							<li><a href="#">Service 4</a></li>
-						</ul>
+						{% services_footer request %}
 					</div>
 					<div id="footer-coord" class="grid_9 omega">
 						<div class="first half">

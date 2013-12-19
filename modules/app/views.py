@@ -12,8 +12,15 @@ from django.conf import settings
 from app.forms import ContactForm
 
 def index(request):
+	from services.models import Service
+	from casestudies.models import CaseStudy
+	
+	services = Service.objects.all().order_by('name')
+	casestudies = CaseStudy.objects.all().order_by('name')
 
-	return render_to_response('index.html',{},context_instance=RequestContext(request))
+	return render_to_response('index.html',{"services":services,
+											"casestudies":casestudies,
+											},context_instance=RequestContext(request))
 
 def contact(request):
 

@@ -176,6 +176,9 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     
     'app',
+    'services',
+    'casestudies',
+    'blog',
 )
 
 LOGGING = {

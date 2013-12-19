@@ -1,0 +1,6 @@
+{% if services %}
+						<ul>
+							{% for service in services %}<li><a href="{{service.get_absolute_url}}">{{service}}</a></li>
+							{% endfor %}
+						</ul>
+{% endif %}
