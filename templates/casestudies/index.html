@@ -1,6 +1,81 @@
 {% extends "base.html" %}
 
-{% block contentClass %}app{% endblock %}
+{% load cms_tags menu_tags sekizai_tags thumbnail %}
+
+{% block contentClass %}casestudies{% endblock %}
 
 {% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+		<div class="container_24">
+			<div class="wrapper">
+				<ul id="breadcrumb" class="clearfix">
+					{% show_breadcrumb "app/breadcrumb.html" %}
+				</ul>
+			</div>
+			
+			<div class="wrapper content-wrap clearfix">
+			{% for column in columns %}
+				<section id="column-{{forloop.counter}}" class="case-column clearfix">
+				{% for case in column.cases %}
+				<article id="case-{{case.id}}" class="case {% if not forloop.counter|divisibleby:"2" %} active{% endif %}">
+					<header>
+						<h1>{{case}}</h1>
+						<figure>
+							{% thumbnail case.photo "300x200" crop="center" as im %}
+							<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{case}}" title="{{case}}"/>
+							{% endthumbnail %}
+						</figure>
+					</header>
+				</article>
+				{% endfor %}
+				<div class="case-column-active">
+					{% for case in column.cases %}
+					<article id="casecontent-{{case.id}}" class="case-content {% if not forloop.counter|divisibleby:"2" %} active{% endif %}">
+						<header>
+							<h1>{{case}}</h1>
+						</header>
+						<div class="content">
+							<p class="case-desc desc-col-{{forloop.parentloop.counter}}">
+								{{case.desc}}
+							</p>
+							<a href="{{case.get_absolute_url}}">
+								En savoir plus
+							</a>
+						</div>
+					</article>
+					{% endfor %}
+				</div>
+				</section>
+				{% empty %}
+				<p>Cette section est vide pour l'instant, revenez plus tard !</p>
+			{% endfor %}
+			</div>
+		</div>
+{% addtoblock "js" %}
+<script type="text/javascript">
+	var columns = {{columns|length}};
+    $(document).ready(function() {
+        for(var i=1;i<=columns;i++)
+        {
+	        $('.desc-col-'+i).equalHeights();
+        }
+        $('article.case').hover(function(){
+        	if(!$(this).hasClass('active'))
+        	{
+	        	pid = $(this).parent('section').attr('id');
+	        	clid = pid.split('-')[1];
+	        	$('#column-'+clid+' .case.active').removeClass('active');
+	        	$(this).addClass('active');
+	        	cid = $(this).attr('id').split('-')[1];
+	        	$('#column-'+clid+' .case-column-active .case-content.active').fadeOut(function(){
+	        		$('#column-'+clid+' .case-column-active .case-content.active').removeClass('active');
+	        		$('#casecontent-'+cid).fadeIn(function(){
+	        			$('#casecontent-'+cid).addClass('active');
+	        		});
+	        	});
+        	}
+        });
+    });
+</script>
+{% endaddtoblock %}
 {% endblock %}

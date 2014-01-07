@@ -23,7 +23,6 @@ def index(request):
 											},context_instance=RequestContext(request))
 
 def contact(request):
-
 	if request.POST:
 		contactForm = ContactForm(request.POST)
 		if contactForm.is_valid():

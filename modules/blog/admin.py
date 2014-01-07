@@ -12,5 +12,12 @@ class BlogPostAdmin(admin.ModelAdmin):
 	list_display = ('title', 'statut', 'category', 'author', 'pub_date',)
 	date_hierarchy = 'pub_date'
 	
+class AuthorAdmin(admin.ModelAdmin):
+	list_display = ('name', 'articles',)
+	
+	def articles(self, obj):
+		return obj.posts.count()
+	
 admin.site.register(BlogPostCategory, BlogPostCategoryAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(Author, AuthorAdmin)

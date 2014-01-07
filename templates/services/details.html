@@ -1,6 +1,32 @@
 {% extends "base.html" %}
 
-{% block contentClass %}app{% endblock %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block contentClass %}services{% endblock %}
 
 {% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+			<div class="container_24">
+				<div class="wrapper">
+					<ul id="breadcrumb" class="clearfix">
+						{% show_breadcrumb "app/breadcrumb.html" %}
+					</ul>
+				</div>
+				
+				<div class="wrapper content-wrap clearfix">
+					<nav id="left-nav" class="grid_6 alpha">
+						<ul class="links">
+							{% show_menu_below_id "services" 0 0 1 %}
+						</ul>
+					</nav>
+					<article class="details grid_18 omega">
+						<header>
+							<h1>{{service}}</h1>
+						</header>
+						<div class="content clearfix">
+							{{service.content|safe}}
+						</div>
+					</article>
+				</div>
+			</div>
 {% endblock %}

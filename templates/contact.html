@@ -2,10 +2,85 @@
 
 {% load cms_tags menu_tags sekizai_tags crispy_forms_tags %}
 
-{% block contentClass %}contact{% endblock %}
-
 {% block content %}
-
-
-
+		<div class="bg-hafl"><div class="right"> </div></div>
+			<div class="container_24">
+				<div class="wrapper">
+					<ul id="breadcrumb" class="clearfix">
+						{% show_breadcrumb "app/breadcrumb.html" %}
+					</ul>
+				</div>
+				
+				<div class="wrapper content-wrap clearfix">
+					<section class="coord grid_6 alpha">
+						<header>
+							<h1>
+								Coordonnées
+							</h1>
+						</header>
+						<div class="content">
+							<strong>Optima Expert-Conseil</strong>
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<span class="glyphicon glyphicon-map-marker">
+											</span>
+										</td>
+										<td>
+											1209, boul. Sacré-Coeur<br/>
+											Saint-Félicien (Québec)<br/>
+											G8K 2R5
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="glyphicon glyphicon-phone-alt">
+											</span>
+										</td>
+										<td>
+											<a href="tel:418-679-2526">418-679-2526</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="glyphicon glyphicon-earphone">
+											</span>
+										</td>
+										<td>
+											<a href="tel:418-679-7621">418-679-7621 (Cell)</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					<section class="cont grid_18 omega">
+						<header>
+							<h1>
+								Nous contacter
+							</h1>
+						</header>
+						<div class="content">
+							<div class="placeholder clearfix">
+								{% placeholder "content" %}
+							</div>
+							<div class="clearfix">
+								<h2 id="contact_a">Formulaire</h2>
+								
+					            {% if contactForm.message %}
+								<div class="panel panel-{{contactForm.mtype}}">
+								  <!-- Default panel contents -->
+								  <div class="panel-heading">{{ contactForm.mtitle }}</div>
+								  <div class="panel-body">
+								    <p>{{ contactForm.message }}</p>
+								  </div>
+								</div>
+					            {% endif %}
+								{% crispy contactForm %}
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
 {% endblock %}

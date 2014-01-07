@@ -1,6 +1,46 @@
 {% extends "base.html" %}
 
-{% block contentClass %}app{% endblock %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block contentClass %}services{% endblock %}
 
 {% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+			<div class="container_24">
+				<div class="wrapper">
+					<ul id="breadcrumb" class="clearfix">
+						{% show_breadcrumb "app/breadcrumb.html" %}
+					</ul>
+				</div>
+				
+				<div class="wrapper content-wrap clearfix">
+					<section class="main grid_24 alpha omega">
+						{% for service in services %}
+						<article class="service{% if forloop.counter|divisibleby:"2" %} last{% endif %}">
+							<header>
+								<h1>{{service}}</h1>
+							</header>
+							<div class="content">
+								<p class="service-desc">
+									{{service.desc}}
+								</p>
+								<a href="{{service.get_absolute_url}}">
+									En savoir plus
+								</a>
+							</div>
+						</article>
+						{% empty %}
+						<p>Cette section est vide pour l'instant, revenez plus tard !</p>
+						{% endfor %}
+					</section>
+				</div>
+			</div>
+{% addtoblock "js" %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        columnsEqualHeight("service-desc",2);
+        columnsEqualHeight("service",2);
+    });
+</script>
+{% endaddtoblock %}
 {% endblock %}

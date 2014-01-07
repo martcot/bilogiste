@@ -33,7 +33,7 @@ class BlogPostCategory(models.Model):
         return u'%s' % (self.name)
     
     class Meta:
-        app_label = "categorie"
+        app_label = "blog"
         db_table = "blog_category"
         verbose_name = _(u"Catégorie d'articles")
         verbose_name_plural = _(u"Catégories d'articles")
@@ -44,13 +44,17 @@ class Author(models.Model):
     photo = models.ImageField(upload_to = "blog", verbose_name=_(u"Photo"))
     desc = models.TextField(verbose_name=_(u"Description"))
     
+    @property
+    def posts(self):
+        return BlogPost.objects.filter(author=self)
+    
     def __str__(self):
         return "%s" % (self.name)
     def __unicode__(self):
         return u'%s' % (self.name)
     
     class Meta:
-        app_label = "auteur"
+        app_label = "blog"
         db_table = "blog_author"
         verbose_name = _(u"Auteur d'articles")
         verbose_name_plural = _(u"Auteurs d'articles")
@@ -102,7 +106,7 @@ class BlogPost(models.Model):
         return u'%s' % (self.title)
     
     class Meta:
-        app_label = "article"
+        app_label = "blog"
         db_table = "blog_post"
         verbose_name = _(u"Article")
         verbose_name_plural = _(u"Articles")

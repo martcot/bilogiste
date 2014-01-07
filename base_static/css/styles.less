@@ -5,7 +5,9 @@
 @w-green:#9a9e55;
 @f-green:#002e13;
 @g-blue:#3e5462;
+@w-beige:#ebe5d1;
 @beige:#d9d4c2;
+@d-beige:#807c71;
 
 @h-header-h:1160px;
 @header-h:128px;
@@ -54,6 +56,12 @@
   text-shadow: 2px 2px 2px rgba(0, 0, 0, @alpha);
 }
 
+.sm-b-shadow(@alpha:0.3) {
+  box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, @alpha);
+  -webkit-box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, @alpha);
+}
+
 .color-trans(@time:0.5s) {
   -webkit-transition: color @time ease-in-out;
   -moz-transition: color @time ease-in-out;
@@ -72,9 +80,19 @@
 .ff1(){ font-family:DroidSans, Helvetica, sans-serif; }
 .ff2(){ font-family:DroidSansBold; }
 
+.opacity-0() {
+  opacity:0;
+  filter:alpha(opacity=0);
+}
+
 .opacity-65() {
   opacity:0.65;
   filter:alpha(opacity=65);
+}
+
+.opacity-100() {
+  opacity:1;
+  filter:alpha(opacity=100);
 }
 
 /* ---------------------------------------------- CSS du site ------------------------------------------- */
@@ -230,6 +248,10 @@ fieldset[disabled] .btn-grey.active {
   background-image: -o-linear-gradient(#605f66, #4b494d);
   border-color: #DDDDDD;
   cursor: not-allowed;
+}
+
+.pagination-div{
+  text-align:right;
 }
 
 /* Design de base */
@@ -475,6 +497,499 @@ body > footer{
   .tdn;
 }
 
+#content #left-nav{
+  display:block;
+  min-height:10px;
+}
+
+#content #left-nav ul.links{
+  width:100%;
+  border-bottom:1px @d-beige solid;
+  margin:0 0 30px 0;
+  padding:0;
+}
+
+#content #left-nav ul.links li{
+  border-bottom:1px @d-beige solid;
+}
+
+#content #left-nav ul.links li a{
+  display:block;
+  padding:10px 15px;
+  background:@beige;
+  color:@d-beige;
+}
+
+#content #left-nav ul.links li a:hover{
+  color:@d-beige;
+  background:@w-beige;
+  .tdn;
+}
+
+#content #left-nav ul.links li.selected a{
+  background:@w-beige;
+}
+
+/* Services */
+
+#content.services .content-wrap{
+  padding-bottom:40px;
+}
+
+#content.services section.main article.service{
+  width:450px;
+  padding:25px 30px;
+  margin-right:37px;
+  margin-bottom:20px;
+  background:@beige;
+  .fl;
+  .sm-b-shadow;
+}
+
+#content.services section.main article.service.last{
+  margin-right:0;
+  background:white;
+}
+
+#content.services section.main article.service header h1{
+  text-align:center;
+  font-size:1.6em;
+  color:@d-green;
+  .normal;
+  .color-trans;
+  .ttu;
+}
+
+#content.services section.main article.service .content{
+  text-align:center;
+  color:@d-green;
+  padding-top:25px;
+  font-size:0.9em;
+}
+
+#content.services section.main article.service .content p{
+  padding:0 0 25px;
+  margin:0;
+}
+
+#content.services section.main article.service .content a{
+  font-size:0.9em;
+  padding:10px 22px;
+  color:white;
+  background:@d-green;
+  border:1px white solid;
+  .opacity-65;
+  .opacity-trans(0.7s);
+  .ttu;
+}
+
+#content.services section.main article.service .content a:hover{
+  opacity:0.90;
+  filter:alpha(opacity=90);
+  .tdn;
+}
+
+#content.services article.details{
+  padding:30px 30px 30px 40px;
+  background:white;
+}
+
+#content.services article.details header{
+  padding:0;
+  margin-bottom:30px;
+}
+
+#content.services article.details header h1{
+  margin:0;
+  padding:0;
+  color:@d-green;
+  font-size:1.4em;
+  font-weight:600;
+}
+
+#content.services article.details .content{
+  color:@d-green;
+  font-size:1em;
+}
+
+#content.services article.details .content p{
+  margin:0 0 20px 0;
+  padding:0;
+}
+
+/* Casestudies */
+
+#content.casestudies .content-wrap{
+  padding-bottom:40px;
+}
+
+#content.casestudies section.case-column{
+  .w100;
+  margin-bottom:30px;
+  padding:0 5px;
+}
+
+#content.casestudies section.case-column .case{
+  width:300px;
+  margin-right:20px;
+  background:white;
+  padding:20px;
+  .fl;
+  border:1px @beige solid;
+}
+
+#content.casestudies section.case-column .case:hover{
+  cursor:pointer;
+}
+
+#content.casestudies section.case-column .case header h1{
+  display:none;
+}
+
+#content.casestudies section.case-column .case header figure{
+  margin:0 auto;
+  .opacity-trans(0.7s);
+  .opacity-65;
+}
+
+#content.casestudies section.case-column .case header figure img{
+  max-width:260px;
+  max-height:173px;
+}
+
+#content.casestudies section.case-column .case.active header figure{
+  .opacity-100;
+}
+
+#content.casestudies section.case-column .case-column-active{
+  width:300px;
+  background:white;
+  .fr;
+  .sm-b-shadow;
+  .rel;
+}
+
+#content.casestudies section.case-column .case-column-active header h1{
+  text-align:center;
+  font-size:1.6em;
+  color:@d-green;
+  .normal;
+  .color-trans;
+  .ttu;
+}
+
+#content.casestudies section.case-column .case-column-active .case-content{
+  padding:20px;
+  display:none;
+}
+
+#content.casestudies section.case-column .case-column-active .case-content.active{
+  display:block;
+}
+
+#content.casestudies section.case-column .case-column-active .case-content .content{
+  color:@d-green;
+  padding-top:25px;
+  font-size:0.9em;
+  text-align:center;
+}
+
+#content.casestudies section.case-column .case-column-active .case-content .content p{
+  padding:0 0 25px;
+  text-align:left;
+  margin:0;
+}
+
+#content.casestudies section.case-column .case-column-active .case-content .content a{
+  font-size:0.9em;
+  padding:10px 22px;
+  color:white;
+  background:@d-green;
+  border:1px white solid;
+  .opacity-65;
+  .opacity-trans(0.7s);
+  .ttu;
+}
+
+#content.casestudies section.case-column .case-column-active .case-content .content a:hover{
+  opacity:0.90;
+  filter:alpha(opacity=90);
+  .tdn;
+}
+
+#content.casestudies article.details{
+  padding:30px 30px 30px 40px;
+  background:white;
+}
+
+#content.casestudies article.details header{
+  padding:0;
+  margin-bottom:30px;
+}
+
+#content.casestudies article.details header h1{
+  margin:0;
+  padding:0;
+  color:@d-green;
+  font-size:1.4em;
+  font-weight:600;
+}
+
+#content.casestudies article.details .content{
+  color:@d-green;
+  font-size:1em;
+}
+
+#content.casestudies article.details .content p{
+  margin:0 0 20px 0;
+  padding:0;
+}
+
+#content.casestudies article.details .content figure{
+  float:left;
+  padding:0 15px 10px 0;
+}
+
+#content.casestudies article.details .content figure img{
+  max-width:300px;
+  height:auto;
+}
+
+#content.casestudies article.details .content h2{
+  margin:0 0 20px 0;
+  padding:0;
+  color:@d-green;
+  font-size:1.2em;
+  font-weight:600;
+}
+
+/* Blog */
+
+#content.blog .content-wrap{
+  padding:0 5px 40px;
+}
+
+#content.blog section.main > header{
+  margin-bottom:20px;
+}
+
+#content.blog section.main > header h1{
+  margin:0;
+  padding:0;
+  color:@d-green;
+  font-size:1.4em;
+  font-weight:600;
+}
+
+#content.blog section.main article.post{
+  padding:20px 20px 20px 0;
+  margin:0 0 20px 0;
+  background:white;
+  border-bottom:2px @d-beige solid;
+}
+
+#content.blog section.main article.post header{
+  margin:0 0 20px 0;
+}
+
+#content.blog section.main article.post header a{
+  .ttu;
+  font-size:1.2em;
+  color:@b-green;
+  .color-trans;
+}
+
+#content.blog section.main article.post header a:hover{
+  .tdn;
+  color:@g-blue;
+}
+
+#content.blog section.main article.post header span{
+  color:@d-beige;
+}
+
+#content.blog section.main article.post.withPhoto .photo{
+  float:left;
+  padding:0 15px 10px 0;
+}
+ 
+#content.blog section.main article.post.withPhoto header,
+#content.blog section.main article.post.withPhoto .content{
+  float:left;
+  width:415px;
+}
+
+#content.blog section.main article.post .content p{
+  margin:0 0 20px 0;
+  padding:0;
+}
+
+#content.blog section.main article.post .content a{
+  font-size:0.9em;
+  color:@b-green;
+  .color-trans;
+  .ttu;
+}
+
+#content.blog section.main article.post .content a:hover{
+  .tdn;
+  color:@g-blue;
+}
+
+#content.blog article.details{
+  padding:30px 30px 30px 40px;
+  background:white;
+}
+
+#content.blog article.details header{
+  padding:0;
+  margin-bottom:30px;
+}
+
+#content.blog article.details header h1{
+  margin:0;
+  padding:0;
+  color:@d-green;
+  font-size:1.4em;
+  font-weight:600;
+}
+
+#content.blog article.details .content{
+  color:@d-green;
+  font-size:1em;
+}
+
+#content.blog article.details .content p{
+  margin:0 0 20px 0;
+  padding:0;
+}
+
+#content.blog article.details .content figure{
+  float:left;
+  padding:0 15px 10px 0;
+}
+
+#content.blog article.details .content figure img{
+  max-width:300px;
+  height:auto;
+}
+
+#content.blog article.details .content h2{
+  margin:0 0 20px 0;
+  padding:0;
+  color:@d-green;
+  font-size:1.2em;
+  font-weight:600;
+}
+
+#content.blog article.details ul.socials{
+  list-style-type: none;
+  width:100%;
+  margin-bottom:30px;
+}
+
+#content.blog article.details ul.socials li{
+  float: left;
+  font-size: 0.9em;
+  letter-spacing: 0.03em;
+  list-style: none outside none;
+  margin-right: 10px;
+}
+
+#content.blog article.details ul.socials li.tw{
+  padding-top:10px;
+}
+
+#content.blog article.details .content .author{
+  border:1px @d-beige solid;
+  padding:20px;
+  margin-bottom:40px;
+}
+
+#content.blog article.details .content .author figure{
+  float:left;
+  width:150px;
+  margin-right:20px;
+  padding:0;
+}
+
+#content.blog article.details .content .author figure img{
+  max-width:100%;
+  height:auto;
+}
+
+#content.blog article.details .content .author h2{
+  font-size:1.1em;
+  baseline:bottom;
+  font-weight:300;
+  float:left;
+  width:428px;
+}
+
+#content.blog article.details .content .author h2 span{
+  font-size:1.2em;
+  font-weight:600;
+}
+
+#content.blog article.details .content .author p{
+  margin:0;
+  float:left;
+  width:428px;
+}
+
+/* Contact */
+
+#contact #content .content-wrap{
+  padding:0 5px 40px;
+}
+
+#contact #content header{
+  margin-bottom:20px;
+}
+
+#contact #content header h1{
+  margin:0;
+  padding:0;
+  color:@d-green;
+  font-size:1.4em;
+  font-weight:600;
+}
+
+#contact #content section.coord{
+  padding:20px 0 0;
+}
+
+#contact #content section.coord .content table{
+  margin:20px 0 10px;
+}
+
+#contact #content section.coord .content table td{
+  padding-bottom:10px;
+}
+
+#contact #content section.coord .content table span.glyphicon{
+  margin-right:15px;
+}
+
+#contact #content section.cont{
+  padding:20px 20px 20px 0;
+  margin:0 0 20px 0;
+  background:white;
+}
+
+#contact #content section.cont .content .placeholder{
+  margin-bottom:20px;
+}
+
+#contact #content section.cont .content h2{
+  margin:0 0 20px;
+  padding:0 0 7px;
+  color:@d-green;
+  font-size:1.4em;
+  font-weight:600;
+  border-bottom:1px @d-beige solid;
+}
+ 
 /* About */
 
 #about #content .content-wrap article.main figure{

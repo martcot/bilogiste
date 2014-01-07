@@ -1,6 +1,45 @@
 {% extends "base.html" %}
 
-{% block contentClass %}app{% endblock %}
+{% load cms_tags menu_tags sekizai_tags thumbnail %}
+
+{% block contentClass %}casestudies{% endblock %}
 
 {% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+		<div class="container_24">
+			<div class="wrapper">
+				<ul id="breadcrumb" class="clearfix">
+					{% show_breadcrumb "app/breadcrumb.html" %}
+				</ul>
+			</div>
+			
+			<div class="wrapper content-wrap clearfix">
+				<nav id="left-nav" class="grid_6 alpha">
+					<ul class="links">
+						{% show_menu_below_id "cases" 0 0 1 %}
+					</ul>
+				</nav>
+				<article class="details grid_18 omega">
+					<header>
+						<h1>{{case}}</h1>
+					</header>
+					<div class="content">
+						<div class="clearfix">
+							<figure>
+								{% thumbnail case.photo "300x200" crop="center" as im %}
+								<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{case}}" title="{{case}}"/>
+								{% endthumbnail %}
+							</figure>
+							{{case.content|safe}}
+						</div>
+						{% if case.testimony %}
+						<div class="clearfix">
+							<h2>Témoignage</h2>
+							{{case.testimony|safe}}
+						</div>
+						{% endif %}
+					</div>
+				</article>
+			</div>
+		</div>
 {% endblock %}

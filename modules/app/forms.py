@@ -44,7 +44,7 @@ class ContactForm(forms.Form):
         self.helper.label_class = 'col-lg-3'
         self.helper.field_class = 'col-lg-9'
 
-        self.helper.add_input(Submit(_('Envoyer'), _('Envoyer'),css_class='btn-orange btn-large pull-right'))
+        self.helper.add_input(Submit(_('Envoyer'), _('Envoyer'),css_class='btn-grey btn-large pull-right'))
 
     def clean_courriel(self):
         data = self.cleaned_data['courriel']

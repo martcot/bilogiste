@@ -1,6 +1,59 @@
 {% extends "base.html" %}
 
-{% block contentClass %}app{% endblock %}
+{% load cms_tags menu_tags sekizai_tags thumbnail pagination_tags %}
+
+{% block contentClass %}blog{% endblock %}
 
 {% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+		<div class="container_24">
+			<div class="wrapper">
+				<ul id="breadcrumb" class="clearfix">
+					{% show_breadcrumb "app/breadcrumb.html" %}
+				</ul>
+			</div>
+			
+			<div class="wrapper content-wrap clearfix">
+				<nav id="left-nav" class="grid_6 alpha">
+					<ul class="links">
+						{% show_menu_below_id "blog" 0 0 1 %}
+					</ul>
+				</nav>
+				<section class="main grid_18 prefix_1 omega">
+					<header>
+						<h1>{% if cat %}{{cat}}{% else %}Articles{% endif %}</h1>
+					</header>
+					{% for post in page_posts.object_list %}
+					<article class="post{% if post.photo %} clearfix withPhoto{% endif %}">
+						{% if post.photo %}
+	                	<div class="photo">
+							<a href="{{post.get_absolute_url}}">
+							{% thumbnail post.photo "200x150" crop="center" as im %}
+								<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{post}}" title="{{post}}"/>
+							{% endthumbnail %}
+							</a>
+						</div>
+						{% endif %}
+						<header>
+							<a href="{{post.get_absolute_url}}"><h2>{{post}}</h2></a>
+							<span>{{post.pub_date|date:"d F Y"}}</span>
+						</header>
+						<div class="content">
+							<p>
+								{{post.desc}}
+							</p>
+							<a href="{{post.get_absolute_url}}">
+								Lire la suite
+							</a>
+						</div>
+					</article>
+					{% empty %}
+					<p>Cette section est vide pour l'instant, revenez plus tard !</p>
+					{% endfor %}
+					
+					{% pagination request paginator page 5 %}
+					
+				</section>
+			</div>
+		</div>
 {% endblock %}

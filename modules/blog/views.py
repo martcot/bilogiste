@@ -27,7 +27,7 @@ def index(request, slug=None):
         
         posts = cat.posts.order_by('-id')
     
-    paginator = Paginator(posts, 7)
+    paginator = Paginator(posts, 4)
     try:
         page = int(request.GET.get('page', '1'))
         if page < 1:

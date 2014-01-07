@@ -1,6 +1,100 @@
 {% extends "base.html" %}
 
-{% block contentClass %}app{% endblock %}
+{% load cms_tags menu_tags sekizai_tags thumbnail %}
+
+{% block contentClass %}blog{% endblock %}
+
+{% block OGMETA %}		<meta property="og:title" content="{{post.title}}" />
+		<meta property="og:site_name" content="Optima Expert-Conseili">
+		<meta name="description" content="{{post.desc|linebreaks|striptags}}">
+		<meta property="og:description" content="{{post.desc|linebreaks|striptags}}">
+		<meta property="og:type" content="article" />
+		<meta property="og:locale" content="fr_CA" />
+		<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+		{% if post.photo %}{% thumbnail post.photo "300x300" crop="center" as im_meta %}<meta property="og:image" content="http://{{request.META.HTTP_HOST}}{{ im_meta.url }}" />
+		<meta property="og:image:width" content="300">
+		<meta property="og:image:height" content="300">
+		{% endthumbnail %}{% else %}<meta property="og:image" content="http://{{request.META.HTTP_HOST}}{{STATIC_URL}}img/default-og.jpg" />
+		<meta property="og:image:type" content="image/jpeg">
+		<meta property="og:image:width" content="230">
+		<meta property="og:image:height" content="230">{% endif %}{% endblock %}
 
 {% block content %}
+		<div class="bg-hafl"><div class="right"> </div></div>
+		<div class="container_24">
+			<div class="wrapper">
+				<ul id="breadcrumb" class="clearfix">
+					{% show_breadcrumb "app/breadcrumb.html" %}
+				</ul>
+			</div>
+			
+			<div class="wrapper content-wrap clearfix">
+				<nav id="left-nav" class="grid_6 alpha">
+					<ul class="links">
+						{% show_menu_below_id "blog" 0 0 1 %}
+					</ul>
+				</nav>
+				<article class="details grid_18 prefix_1 omega">
+					<header>
+						<h1>{{post}}</h1>
+					</header>
+					<div class="content">
+						<div class="clearfix">
+							<figure>
+								{% thumbnail post.photo "300x200" crop="center" as im %}
+								<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{post}}" title="{{post}}"/>
+								{% endthumbnail %}
+							</figure>
+							{{post.content|safe}}
+						</div>
+						
+						<ul class="socials clearfix">
+							<li>
+								<div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+							</li>
+							<li>
+								<div class="g-plusone" data-size="tall"></div>
+							</li>
+							<li>
+								<script type="IN/Share" data-counter="top"></script>
+							</li>
+							<li class="tw">
+								<a href="https://twitter.com/share" data-url="{{ request.build_absolute_uri }}" class="twitter-share-button" data-lang="fr" data-count="vertical">Tweeter</a>
+							</li>
+						</ul>
+						
+						<div class="author clearfix">
+							<figure>
+							{% thumbnail post.author.photo "150x112" crop="top" as im %}
+								<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{post.author}}" title="{{post.author}}"/>
+							{% endthumbnail %}
+							</figure>
+							<h2>Auteur:<br/><span>{{post.author}}</span></h2>
+							<p>
+								{{post.author.desc}}
+							</p>
+						</div>
+					</div>
+					<div id="disqus_thread"></div>
+					<noscript>S'il-vous-plait activez Javascript pour voir les <a href="http://disqus.com/?ref_noscript">commentaires Disqus.</a></noscript>
+		    		<a href="http://disqus.com" class="dsq-brlink">Commentaires par <span class="logo-disqus">Disqus</span></a>
+				</article>
+			</div>
+		</div>
+{% addtoblock "js" %}
+<script type="text/javascript">
+    var disqus_shortname = 'optimaexpertconseil';
+    var disqus_title = '{{post}}';
+    var disqus_url = '{{ request.build_absolute_uri }}';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+	var disqus_config = function () {
+	  this.language = "fr";
+	};
+</script>
+{% include "app/socialsScripts.html" %}
+{% endaddtoblock %}
 {% endblock %}

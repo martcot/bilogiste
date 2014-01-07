@@ -11,9 +11,9 @@ from django.template.loader import render_to_string
 
 from services.models import Service
 
-services = Service.objects.all().order_by('name')
-
 def index(request):
+    services = Service.objects.all().order_by('name')
+    
     return render_to_response('services/index.html', {"services":services,
                                                       }, context_instance=RequestContext(request))
 
@@ -24,6 +24,5 @@ def details(request, slug):
     except Service.DoesNotExist:
         raise Http404
 
-    return render_to_response('services/details.html', {"services":services,
-                                                        "service":service,
+    return render_to_response('services/details.html', {"service":service,
                                                         }, context_instance=RequestContext(request))
