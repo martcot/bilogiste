@@ -47,4 +47,16 @@ def clean_html(html):
             
     cleaned = unicode(soup)
     
+    replacements2 = [
+        {'s':'<html>', 'r':''},
+        {'s':'</html>', 'r':''},
+        {'s':'<body>', 'r':''},
+        {'s':'</body>', 'r':''},
+        {'s':'<head>', 'r':''},
+        {'s':'</head>', 'r':''},
+    ]
+
+    for replacement in replacements2:
+        cleaned = cleaned.replace(replacement['s'], replacement['r'])
+    
     return cleaned
